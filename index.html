@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason Video Productions, LLC | Premier Construction & Masonry</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --white: #ffffff;
+            --text: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin-left: 2rem; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* General Section Styles */
+        section { padding: 100px 10%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* 1. Hero Screen */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1541913054-6479c5ca9112?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .btn:hover { background: #cf6d17; transform: translateY(-3px); }
+
+        /* 2. About Us (Our Heritage) */
+        .about { background: var(--light); }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #555;
+        }
+
+        /* 3. Services (Core Capabilities) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .service-card h3 { margin-bottom: 1rem; color: var(--primary); }
+
+        /* 4. Why Us (The Mason Advantage) */
+        .advantages { background: var(--primary); color: var(--white); }
+        .advantages h2 { color: var(--white); }
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .adv-item h4 { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; }
+
+        /* 5. Process (Project Lifecycle) */
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            position: relative;
+        }
+        .step { flex: 1; text-align: center; }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 6. Contact Form */
+        .contact { background: var(--light); }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .submit-btn:hover { background: var(--accent); }
+
+        /* 7. Footer */
+        footer {
+            background: #1a1a1a;
+            color: #bdc3c7;
+            padding: 4rem 10% 2rem;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .footer-box { margin: 1rem; min-width: 250px; }
+        .footer-box h4 { color: var(--white); margin-bottom: 1rem; }
+        .footer-box a { color: var(--accent); text-decoration: none; }
+        .copy { border-top: 1px solid #333; padding-top: 2rem; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .process-flow { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Mason Video Productions, LLC</div>
+        <ul class="nav-links">
+            <li><a href="#about">Heritage</a></li>
+            <li><a href="#services">Capabilities</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Inquiry</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Building Solid Foundations for North Carolina’s Future</h1>
+        <p>Specialized contractors providing expert masonry, stonework, and exterior building solutions with structural integrity.</p>
+        <a href="#contact" class="btn">Request a Quote</a>
+    </header>
+
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>Our Heritage of Excellence</h2>
+            <p>Mastering the art of structural construction in Asheboro.</p>
+        </div>
+        <div class="about-content">
+            <p>
+                Mason Video Productions, LLC, led by Robert E. Mason, is a premier specialized trade contractor based in Asheboro, NC. 
+                With deep expertise in foundation, structure, and building exterior work, we have built a reputation for delivering uncompromising quality. 
+                Our team specializes in masonry and other stonework, ensuring that every project reflects both aesthetic beauty and structural permanence. 
+                We serve the broader North Carolina region, bringing decades of technical knowledge to residential and non-residential building construction. 
+                At our core, we believe that a building is only as strong as its foundation, which is why we approach every job with meticulous attention to detail. 
+                Whether it's complex stonework or critical structural reinforcement, we are dedicated to setting the industry standard for craftsmanship.
+            </p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <h2>Core Capabilities</h2>
+            <p>Comprehensive structural solutions for diverse construction needs.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Masonry & Stonework</h3>
+                <p>We provide expert installation of stone, brick, and block structures for high-end exteriors. Our stonework is designed to withstand the elements while providing a timeless look. We handle both decorative and load-bearing masonry projects.</p>
+            </div>
+            <div class="service-card">
+                <h3>Foundation & Structure</h3>
+                <p>Our team specializes in the critical first stages of construction, ensuring structural integrity from the ground up. We use advanced techniques for foundation reinforcement and exterior building stability. We mitigate long-term risks through precision engineering.</p>
+            </div>
+            <div class="service-card">
+                <h3>Specialty Contracting</h3>
+                <p>Beyond standard masonry, we offer specialized services for unique building requirements in the construction sector. This includes building finishing, exterior restoration, and specialized structural repairs. We adapt our skills to meet the specific needs of residential and commercial clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="section-header">
+            <h2>The Mason Advantage</h2>
+            <p>Why we are North Carolina’s trusted structural partner.</p>
+        </div>
+        <div class="adv-grid">
+            <div class="adv-item">
+                <h4>Principled Leadership</h4>
+                <p>Under Robert E. Mason, we maintain a strict code of professional ethics and operational excellence on every site.</p>
+            </div>
+            <div class="adv-item">
+                <h4>Regional Expertise</h4>
+                <p>Deeply rooted in Asheboro, NC, we understand local building codes and environmental conditions for optimal construction.</p>
+            </div>
+            <div class="adv-item">
+                <h4>Versatile Solutions</h4>
+                <p>Our experience spans from residential building to heavy civil engineering support, providing a one-stop structural solution.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="section-header">
+            <h2>Project Lifecycle</h2>
+            <p>Our systematic approach to delivering structural perfection.</p>
+        </div>
+        <div class="process-flow">
+            <div class="step">
+                <div class="step-icon">01</div>
+                <h3>Site Analysis</h3>
+                <p>We conduct a thorough assessment of the terrain and structural requirements to ensure the foundation is sound.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">02</div>
+                <h3>Strategic Build</h3>
+                <p>Our master masons execute the project using premium materials and industry-leading construction techniques.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">03</div>
+                <h3>Quality Audit</h3>
+                <p>Before completion, every structure undergoes a rigorous quality check to ensure it meets our heritage standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2>Discuss Your Project</h2>
+            <p>Connect with our experts for an in-depth consultation and quote.</p>
+        </div>
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Corporate Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Project Details (e.g., Masonry, Foundation, etc.)"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-box">
+                <h4>Headquarters</h4>
+                <p>748 Westmont Dr<br>Asheboro, NC, 27205-4264<br>United States</p>
+            </div>
+            <div class="footer-box">
+                <h4>Direct Contact</h4>
+                <p>Email: <a href="mailto:info@masonvideoproductions.pro">info@masonvideoproductions.pro</a></p>
+            </div>
+            <div class="footer-box">
+                <h4>Industry Focus</h4>
+                <p>Specialty Trade Contractors<br>Masonry & Stonework</p>
+            </div>
+        </div>
+        <div class="copy">
+            &copy; 2026 Mason Video Productions, LLC. All rights reserved. Registered in North Carolina.
+        </div>
+    </footer>
+
+</body>
+</html>
